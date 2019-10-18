@@ -1,0 +1,13 @@
+<%= link_to 'Create room', new_room_path, class: 'block m-1 p-2 text-white rounded bg-teal-700 hover:bg-teal-900 hover:shadow-xl' %>
+<% if @rooms.present? %>
+<div class="bg-blue-100 border-aqua p-2">
+  <% @rooms.each do |room| %>
+  <div class="truncate
+  ">
+    <%= link_to room.name, room_path(room), class: 'inline-block bg-teal-600 hover:bg-teal-800 text-white mt-4 rounded px-2 py-1' %>
+  </div>
+  <% end %>
+</div>
+<% else %>
+  <p>There are no rooms available.</p>
+<% end%>

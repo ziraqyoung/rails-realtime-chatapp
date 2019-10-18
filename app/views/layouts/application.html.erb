@@ -10,7 +10,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="text-gray-800 bg-gray-600">
+    <%= render 'shared/navigation' %>
+    <div class="md:w-10/12 mt-2 mx-auto">
+      <%= yield %>
+    </div>
   </body>
 </html>

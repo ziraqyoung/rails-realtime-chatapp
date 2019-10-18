@@ -1,0 +1,47 @@
+<div class="flex">
+  <div class="w-1/4 px-2 py-2 m-1 rounded-lg shadow-md bg-white">
+    <%= render 'rooms' %>
+  </div>
+  
+  <div class="flex flex-col w-3/4">
+
+    <div class=" px-4 py-2 m-1 rounded-lg shadow-md bg-white">
+
+      <div class="bg-teal-100 overflow-hidden overflow-y-scroll relative h-full w-full text-teal-900 border-lg rounded p-2">
+        <h1 class="text-2xl text-center text-gray-800 font-bold"><%= @room.name %></h1>
+        <hr />
+
+        <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+          <% @room_messages.each do |room_message| %>
+
+            <div data-role="message-template" class="flex items-center m-2">
+              <div class="p-3 rounded-full bg-teal-200">
+                <img src="<%= room_message.user.gravatar_url %>" class="h-8 w-8 rounded-full object-cover object-fit" alt="Profile" />
+              </div>     
+              <div class="ml-1 w-full p-2 rounded-lg bg-teal-200 text-gray-900">
+              <div class="text-sm text-right">
+                  <small class="uppercase leading-tight text-gray-600" data-role="message-date"><%= room_message.user.username %></small>
+                </div>
+                <div data-role="message-text" class="text-base text-gray-800"><%= room_message.message %></div>
+                <div class="text-sm text-right">
+                  <small class="leading-tight text-gray-600" data-role="message-date"><%= room_message.created_at %></small>
+                </div>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="px-4 py-2 m-1 rounded-lg shadow-md bg-white">
+      <%= form_for @room_message, remote: true, data: { controller: 'room-message', action: 'ajax:success->room-message#onPostSuccess' }, html: {class: 'w-full'} do |f| %>
+      <div class="flex mb-1 w-full">
+          <%= f.text_field :message, autofocus: true, data: { target: 'room-message.message' }, class: 'w-full shadow appearance-none rounded border px-3 py-3 text-white  focus:outline-none focus:shadow-outline bg-gray-700 font-bold', placeholder: 'type you message....' %>
+          <%= f.submit 'Send', class: 'shadow bg-teal-700 ml-auto hover:bg-teal-900 hover:shadow-xl focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
+          <%= f.hidden_field :room_id, as: :hidden %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

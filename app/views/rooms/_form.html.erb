@@ -1,0 +1,7 @@
+<%= form_for @room do |f| %>
+  <div class="field mb-6">
+    <%= f.label :name, class: 'block text-gray-700 mb-1 font-bold' %>
+    <%= f.text_field :name, class: 'shadow appearance-none rounded w-full border px-3 py-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+  </div>
+  <%= f.submit 'Save', role: 'button', class: 'shadow bg-teal-700 hover:bg-teal-900 hover:shadow-xl focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
+<% end %>

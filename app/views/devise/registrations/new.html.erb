@@ -1,0 +1,39 @@
+<div class="m-12">
+  <div class="md:w-1/2 md:mx-auto rounded shadow-md bg-white px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-center text-3xl text-gray-800">Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field mb-6">
+        <%= f.label :username, class: 'inline-block mb-2 text-gray-700 font-bold' %><br />
+        <%= f.text_field :username, class: 'shadow appearance-none rounded w-full px-3 py-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', placeholder: 'Username' %>
+      </div>
+
+      <div class="field mb-6">
+        <%= f.label :email, class: 'inline-block mb-2 text-gray-700 font-bold' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'shadow appearance-none rounded w-full px-3 py-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', placeholder: 'Email' %>
+      </div>
+
+      <div class="field mb-6">
+        <%= f.label :password, class: 'inline-block mb-2 text-gray-700 font-bold' %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'shadow appearance-none rounded w-full px-3 py-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', placeholder: 'Password' %>
+      </div>
+
+      <div class="field mb-6">
+        <%= f.label :password_confirmation, class: 'inline-block mb-2 text-gray-700 font-bold' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'shadow appearance-none rounded w-full px-3 py-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', placeholder: 'Password' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: 'shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+
+</div>

@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(
+  username: 'Ziraq',
+  email: 'user@mail.com',
+  password: '12345678',
+  password_confirmation: '12345678'
+)
+user = User.first
+10.times { |n| Room.create!(name: "Room-#{n}") }
+room = Room.first
+5.times { |n| RoomMessage.create!( room: room, user: user, message: "Message #{n} for First room") }
