@@ -24,7 +24,7 @@
                 </div>
                 <div data-role="message-text" class="text-base text-gray-800"><%= room_message.message %></div>
                 <div class="text-sm text-right">
-                  <small class="leading-tight text-gray-600" data-role="message-date"><%= room_message.created_at %></small>
+                  <small class="leading-tight text-gray-600" data-role="message-date"><%= time_ago_in_words(room_message.created_at) %></small>
                 </div>
               </div>
             </div>
