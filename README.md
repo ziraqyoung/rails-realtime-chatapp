@@ -18,7 +18,7 @@ Implements **jquery**, **tailwindcss**, **webpacker**, **postgresql** database, 
 
 - **Clone the repo from github**
 
-        $ https://github.com/ziraqyoung/rails-realtime-chatapp.git
+        $ git clone https://github.com/ziraqyoung/rails-realtime-chatapp.git
 
         $ cd rails-realtime-chatapp
 
