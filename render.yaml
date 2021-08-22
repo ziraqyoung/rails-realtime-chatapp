@@ -1,0 +1,20 @@
+databases:
+- name: rails_realtime_chat
+  databaseName: rails_realtime_chat
+  user: rails_realtime_chat_user
+
+services:
+- type: web
+  name: rails-realtime-chat
+  env: ruby
+  buildCommand: "./bin/render-build.sh"
+  startCommand: "bundle exec puma -C config/puma.rb"
+  envVars:
+    - key: DATABASE_URL
+      fromDatabase:
+        name: rails_realtime_chat
+        property: connectionString
+    - key: REDIS_URL
+      value: redis://redis-tailscale:6379
+    - key: SECRET_KEY_BASE
+      sync: false
