@@ -4,6 +4,13 @@ databases:
   user: rails_realtime_chat_user
 
 services:
+- type: pserv
+  name: redis
+  env: docker
+  disk:
+    name: data
+    mountPath: /var/lib/redis
+    sizeGB: 1
 - type: web
   name: rails-realtime-chat
   env: ruby
@@ -14,7 +21,10 @@ services:
       fromDatabase:
         name: rails_realtime_chat
         property: connectionString
-    - key: REDIS_URL
-      value: redis://redis-tailscale:6379
+    - key: REDIS_HOSTPORT
+      fromService:
+        name: redis
+        type: pserv
+        property: hostport
     - key: SECRET_KEY_BASE
       sync: false

@@ -8,6 +8,8 @@ Rails.application.configure do
     http://rails-realtime-chat.onrender.com
   ]
 
+  ENV['REDIS_URL'] = "redis://#{ENV['REDIS_HOSTPORT']}"
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
